@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Signup from "../../assets/others/authentication1-transformed.png";
 import "../SignUp/SignUp.css";
 import { useForm } from "react-hook-form";
@@ -15,7 +15,7 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
   const { createUser, updateUserProfile } = useContext(AuthContext);
-//   const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log(data);
@@ -33,7 +33,7 @@ const SignUp = () => {
             showConfirmButton: false,
             timer: 1500,
           });
-        //   navigate('/');
+          navigate('/');
         })
         .catch((error) => console.log(error));
     });
@@ -57,7 +57,7 @@ const SignUp = () => {
                   type="text"
                   {...register("name", { required: true })}
                   name="name"
-                  placeholder="name"
+                  placeholder="Name"
                   className="input input-bordered"
                   required
                 />
@@ -89,7 +89,7 @@ const SignUp = () => {
                   type="email"
                   {...register("email", { required: true })}
                   name="email"
-                  placeholder="email"
+                  placeholder="Email"
                   className="input input-bordered"
                   required
                 />
@@ -110,7 +110,7 @@ const SignUp = () => {
                     pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
                   })}
                   name="password"
-                  placeholder="password"
+                  placeholder="Password"
                   className="input input-bordered"
                   required
                 />

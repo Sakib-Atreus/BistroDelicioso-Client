@@ -47,10 +47,9 @@ const NavBar = () => {
               {user ? (
                 <>
                   <li>
-                  <p className="text-green-600 text-3xl">{user?.name}</p>
+                  <p className="text-blue-600 text-bold text-lg text-center">{user?.displayName}</p>
                 </li>
                   <li>
-                    <p className="text-green-600 text-3xl" >{user?.name}</p>
                     <Link>
                       <button onClick={handleLogOut} className="btn btn-ghost">
                         LogOut
@@ -91,10 +90,9 @@ const NavBar = () => {
             {user ? (
               <>
                 <li>
-                  <p className="text-green-600 text-3xl">{user?.name}</p>
+                  <p className="text-blue-600 text-bold text-lg text-center">{user?.displayName}</p>
                 </li>
                 <li>
-                <p className="text-green-600 text-3xl">{user?.name}</p>
                   <Link>
                     <button onClick={handleLogOut} className="">
                       LogOut
