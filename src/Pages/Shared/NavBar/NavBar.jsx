@@ -1,6 +1,15 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../AuthProviders/AuthProviders";
 
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
   return (
     <>
       <div className="navbar fixed z-10 max-w-screen-xl bg-opacity-20 bg-black text-white">
@@ -35,6 +44,27 @@ const NavBar = () => {
               <li>
                 <Link to="/order/salad">Order Food</Link>
               </li>
+              {user ? (
+                <>
+                  <li>
+                  <p className="text-green-600 text-3xl">{user?.name}</p>
+                </li>
+                  <li>
+                    <p className="text-green-600 text-3xl" >{user?.name}</p>
+                    <Link>
+                      <button onClick={handleLogOut} className="btn btn-ghost">
+                        LogOut
+                      </button>
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link to="/login">Login</Link>
+                  </li>
+                </>
+              )}
               <li>
                 <Link to="/about">About</Link>
               </li>
@@ -56,8 +86,29 @@ const NavBar = () => {
               <Link to="/menu">Our Menu</Link>
             </li>
             <li>
-                <Link to="/order/salad">Order Food</Link>
+              <Link to="/order/salad">Order Food</Link>
             </li>
+            {user ? (
+              <>
+                <li>
+                  <p className="text-green-600 text-3xl">{user?.name}</p>
+                </li>
+                <li>
+                <p className="text-green-600 text-3xl">{user?.name}</p>
+                  <Link>
+                    <button onClick={handleLogOut} className="">
+                      LogOut
+                    </button>
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+              </>
+            )}
             <li>
               <Link to="/about">About</Link>
             </li>
