@@ -1,16 +1,19 @@
 import { useContext } from "react";
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../AuthProviders/AuthProviders";
+import useCart from "../../../hooks/useCart";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [cart] = useCart();
 
   const handleLogOut = () => {
     logOut()
       .then(() => {})
       .catch((error) => console.log(error));
   };
+  console.log(cart?.length);
   return (
     <>
       <div className="navbar fixed z-10 max-w-screen-xl bg-opacity-20 bg-black text-white">
@@ -45,11 +48,15 @@ const NavBar = () => {
               <li>
                 <Link to="/order/salad">Order Food</Link>
               </li>
-              <li>
+              <li className="bg-blue-400">
+              <Link to="/dashboard/myCart">
                 <button className="btn">
                   <FaShoppingCart></FaShoppingCart>
-                  <div className="badge badge-secondary">+0</div>
+                  <div className="badge badge-secondary">
+                    +{cart?.length || 0}
+                  </div>
                 </button>
+              </Link>
               </li>
               {user ? (
                 <>
@@ -92,10 +99,14 @@ const NavBar = () => {
               <Link to="/order/salad">Order Food</Link>
             </li>
             <li>
-              <button className="btn">
-                <FaShoppingCart></FaShoppingCart>
-                <div className="badge badge-secondary">+0</div>
-              </button>
+              <Link to="/dashboard/myCart">
+                <button className="btn">
+                  <FaShoppingCart></FaShoppingCart>
+                  <div className="badge badge-secondary">
+                    +{cart?.length || 0}
+                  </div>
+                </button>
+              </Link>
             </li>
             {user ? (
               <>
