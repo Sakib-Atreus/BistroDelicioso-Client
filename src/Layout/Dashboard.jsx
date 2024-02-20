@@ -4,6 +4,8 @@ import {
   FaHome,
   FaCalendarAlt,
   FaWallet,
+  FaShopify,
+  FaAlignJustify
 } from "react-icons/fa";
 import useCart from "../hooks/useCart";
 
@@ -60,10 +62,10 @@ const Dashboard = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/menu">Our Menu</NavLink>
+            <NavLink to="/menu"><FaAlignJustify></FaAlignJustify>Our Menu</NavLink>
           </li>
           <li>
-            <NavLink to="/order/salad">Order Food</NavLink>
+            <NavLink to="/order/salad"><FaShopify></FaShopify>Order Food</NavLink>
           </li>
         </ul>
       </div>

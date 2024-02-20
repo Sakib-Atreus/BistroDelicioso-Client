@@ -16,7 +16,7 @@ const NavBar = () => {
   console.log(cart?.length);
   return (
     <>
-      <div className="navbar fixed z-10 max-w-screen-xl bg-opacity-20 bg-black text-white">
+      <div className="navbar fixed z-10 max-w-screen-xl bg-opacity-20 bg-black text-white uppercase">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -48,22 +48,12 @@ const NavBar = () => {
               <li>
                 <Link to="/order/salad">Order Food</Link>
               </li>
-              <li className="bg-blue-400">
-              <Link to="/dashboard/myCart">
-                <button className="btn">
-                  <FaShoppingCart></FaShoppingCart>
-                  <div className="badge badge-secondary">
-                    +{cart?.length || 0}
-                  </div>
-                </button>
-              </Link>
-              </li>
               {user ? (
                 <>
                   <li>
                     <Link>
                       <button onClick={handleLogOut} className="btn btn-ghost">
-                        LogOut
+                        SIGN OUT
                       </button>
                     </Link>
                   </li>
@@ -71,12 +61,23 @@ const NavBar = () => {
               ) : (
                 <>
                   <li>
-                    <Link to="/login">Login</Link>
+                    <Link to="/login">LOGIN</Link>
                   </li>
                 </>
               )}
               <li>
                 <Link to="/about">About</Link>
+              </li>
+              <li className="bg-blue-400">
+                <Link to="/dashboard/myCart">
+                  <p className="">Dashboard</p>
+                  <div className="absolute">
+                    <p className="bg-orange-500 mb-8 ms-16 rounded-md relative hover:p-1 flex text-md">
+                      <FaShoppingCart className="mt-1 text-black"></FaShoppingCart>
+                      +{cart?.length || 0}
+                    </p>
+                  </div>
+                </Link>
               </li>
             </ul>
           </div>
@@ -98,22 +99,12 @@ const NavBar = () => {
             <li>
               <Link to="/order/salad">Order Food</Link>
             </li>
-            <li>
-              <Link to="/dashboard/myCart">
-                <button className="btn">
-                  <FaShoppingCart></FaShoppingCart>
-                  <div className="badge badge-secondary">
-                    +{cart?.length || 0}
-                  </div>
-                </button>
-              </Link>
-            </li>
             {user ? (
               <>
                 <li>
                   <Link>
                     <button onClick={handleLogOut} className="">
-                      LogOut
+                      SIGN OUT
                     </button>
                   </Link>
                 </li>
@@ -121,12 +112,23 @@ const NavBar = () => {
             ) : (
               <>
                 <li>
-                  <Link to="/login">Login</Link>
+                  <Link to="/login">LOGIN</Link>
                 </li>
               </>
             )}
             <li>
               <Link to="/about">About</Link>
+            </li>
+            <li className="">
+              <Link to="/dashboard/myCart">
+                <p className="">Dashboard</p>
+                <div className="absolute">
+                  <p className="bg-orange-500 mb-8 ms-20 rounded-md relative hover:p-1 flex text-md">
+                    <FaShoppingCart className="mt-1 text-black"></FaShoppingCart>
+                    +{cart?.length || 0}
+                  </p>
+                </div>
+              </Link>
             </li>
           </ul>
         </div>

@@ -45,10 +45,10 @@ const MyCart = () => {
       <Helmet>
         <title>Bistro Delicioso | My Cart</title>
       </Helmet>
-      <div className="uppercase font-medium h-[60px] flex justify-evenly items-center">
-        <h3 className="text-xl ">Total Items: {cart.length}</h3>
-        <h3 className="text-xl ">Total Price: ${total}</h3>
-        <button className="btn btn-warning btn-sm">PAY</button>
+      <div className="uppercase font-bold h-[60px] flex justify-evenly items-center">
+        <h3 className="text-2xl ">Total Items: {cart.length}</h3>
+        <h3 className="text-2xl ">Total Price: ${total}</h3>
+        <button className="btn bg-[#D1A054] btn-sm text-white ">PAY</button>
       </div>
       <div className="overflow-x-auto">
         <table className="table">
