@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProviders/AuthProviders";
 import Swal from "sweetalert2";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const SignUp = () => {
   const {
@@ -19,13 +20,30 @@ const SignUp = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+
     createUser(data.email, data.password).then((result) => {
+
       const loggedUser = result.user;
       console.log(loggedUser);
+
       updateUserProfile(data.name, data.photoUrl)
         .then(() => {
-          console.log("user profile info updated");
-          reset();
+          const saveUser = { name: data.name, email: data.email }
+          // console.log("user profile info updated");
+
+          fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+              'content-type' : 'application/json'
+            },
+            body: JSON.stringify(saveUser)
+          })
+          .then(res => res.json())
+          .then(data => {
+            if(data.insertedId){
+              console.log(data);
+              reset();
+
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -34,6 +52,10 @@ const SignUp = () => {
             timer: 1500,
           });
           navigate('/');
+            }
+          })
+
+          
         })
         .catch((error) => console.log(error));
     });
@@ -161,6 +183,7 @@ const SignUp = () => {
               </p>
               <p className="text-sm text-center">Or sign in with</p>
             </form>
+            <SocialLogin></SocialLogin>
           </div>
           <div className="text-center lg:text-left">
             <img className="" src={Signup} alt="" />
