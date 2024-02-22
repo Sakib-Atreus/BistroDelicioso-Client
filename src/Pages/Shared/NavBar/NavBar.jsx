@@ -71,17 +71,27 @@ const NavBar = () => {
               <li>
                 <Link to="/about">About</Link>
               </li>
-              <li className="bg-blue-400">
+              {user && (
+              <li className="">
                 <Link to="/dashboard/myCart">
                   <p className="">Dashboard</p>
-                  <div className="absolute">
-                    <p className="bg-orange-500 mb-8 ms-16 rounded-md relative hover:p-1 flex text-md">
-                      <FaShoppingCart className="mt-1 text-black"></FaShoppingCart>
-                      +{cart?.length || 0}
-                    </p>
-                  </div>
+                  {isAdmin ? (
+                    <>
+                      <div className="absolute"></div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="absolute">
+                        <p className="bg-orange-500 mb-8 ms-20 rounded-md relative hover:p-1 flex text-md">
+                          <FaShoppingCart className="mt-1 text-black"></FaShoppingCart>
+                          +{cart?.length || 0}
+                        </p>
+                      </div>
+                    </>
+                  )}
                 </Link>
               </li>
+            )}
             </ul>
           </div>
           <a className="btn btn-ghost text-xl">
