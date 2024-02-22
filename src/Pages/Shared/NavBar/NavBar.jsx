@@ -3,10 +3,13 @@ import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../AuthProviders/AuthProviders";
 import useCart from "../../../hooks/useCart";
+import useAdmin from "../../../hooks/useAdmin";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [cart] = useCart();
+
+  const [isAdmin] = useAdmin();
 
   const handleLogOut = () => {
     logOut()
@@ -119,17 +122,27 @@ const NavBar = () => {
             <li>
               <Link to="/about">About</Link>
             </li>
-            <li className="">
-              <Link to="/dashboard/myCart">
-                <p className="">Dashboard</p>
-                <div className="absolute">
-                  <p className="bg-orange-500 mb-8 ms-20 rounded-md relative hover:p-1 flex text-md">
-                    <FaShoppingCart className="mt-1 text-black"></FaShoppingCart>
-                    +{cart?.length || 0}
-                  </p>
-                </div>
-              </Link>
-            </li>
+            {user && (
+              <li className="">
+                <Link to="/dashboard/myCart">
+                  <p className="">Dashboard</p>
+                  {isAdmin ? (
+                    <>
+                      <div className="absolute"></div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="absolute">
+                        <p className="bg-orange-500 mb-8 ms-20 rounded-md relative hover:p-1 flex text-md">
+                          <FaShoppingCart className="mt-1 text-black"></FaShoppingCart>
+                          +{cart?.length || 0}
+                        </p>
+                      </div>
+                    </>
+                  )}
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
         <div className="navbar-end">
