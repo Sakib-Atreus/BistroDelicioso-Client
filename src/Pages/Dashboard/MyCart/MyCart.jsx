@@ -40,6 +40,7 @@ const MyCart = () => {
       }
     });
   };
+  console.log(cart.length);
 
   return (
     <div className="w-full ms-4">
