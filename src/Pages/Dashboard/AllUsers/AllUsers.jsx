@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { FaTrashAlt, FaUserShield } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const AllUsers = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -41,15 +43,22 @@ const AllUsers = () => {
   const handleDelete = (user) => {};
 
   return (
-    <div className="w-full">
-      <h3 className="text-3xl font-semibold my-4">
-        Total Users: {users.length}
+    <div className="w-full ms-4">
+      <Helmet>
+        <title>Bistro Delicioso | All User{"'"}s</title>
+      </Helmet>
+      <SectionTitle
+        subHeading={"How many?"}
+        heading={"MANAGE ALL USERS"}
+      ></SectionTitle>
+      <h3 className="text-3xl font-semibold my-4 text-[#D1A054]">
+        Total User{"'"}s: <span className="text-black">{users.length}</span>
       </h3>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           {/* head */}
           <thead>
-            <tr>
+            <tr className="bg-[#D1A054]">
               <th>#</th>
               <th>Name</th>
               <th>Email</th>
