@@ -22,7 +22,7 @@ const MyCart = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/carts/${item._id}`, {
+        fetch(`https://bistro-delicioso-server.vercel.app/carts/${item._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -56,9 +56,11 @@ const MyCart = () => {
         <div className="uppercase font-bold  my-4 p-2 h-[60px] flex justify-evenly items-center">
           <h3 className="text-2xl ">Total Items: {cart.length}</h3>
           <h3 className="text-2xl ">Total Price: ${total}</h3>
-          <Link to="/dashboard/payment"><button className="btn bg-[#D1A054] btn-sm text-black font-bold ">
-            PAY
-          </button></Link>
+          <Link to="/dashboard/payment">
+            <button className="btn bg-[#D1A054] btn-sm text-black font-bold ">
+              PAY
+            </button>
+          </Link>
         </div>
         <div className="overflow-x-auto">
           <table className="table">

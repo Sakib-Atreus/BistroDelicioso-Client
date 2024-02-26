@@ -4,7 +4,7 @@ import useAuth from "./useAuth";
 import { useEffect } from "react";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://bistro-delicioso-server.vercel.app",
 });
 
 const useAxiosSecure = () => {
@@ -34,7 +34,7 @@ const useAxiosSecure = () => {
       }
     );
   }, [logOut, navigate]);
-  
+
   return [axiosSecure];
 };
 
