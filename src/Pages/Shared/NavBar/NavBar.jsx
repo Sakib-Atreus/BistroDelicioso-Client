@@ -73,7 +73,7 @@ const NavBar = () => {
               </li>
               {user && (
               <li className="">
-                <Link to="/dashboard/myCart">
+                <Link to={ isAdmin ? '/dashboard/adminHome' : '/dashboard/userHome'}>
                   <p className="">Dashboard</p>
                   {isAdmin ? (
                     <>
@@ -134,7 +134,7 @@ const NavBar = () => {
             </li>
             {user && (
               <li className="">
-                <Link to="/dashboard/myCart">
+                <Link to={ isAdmin ? '/dashboard/adminHome' : '/dashboard/userHome'}>
                   <p className="">Dashboard</p>
                   {isAdmin ? (
                     <>
