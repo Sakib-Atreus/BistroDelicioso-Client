@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../AuthProviders/AuthProviders";
 import useCart from "../../../hooks/useCart";
 import useAdmin from "../../../hooks/useAdmin";
+import logo from '../../../assets/icon/logo.png';
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -156,7 +157,7 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Get Started</a>
+          <a href="/" className="w-12 h-12 me-2"><img src={logo} alt="" /></a>
         </div>
       </div>
     </>

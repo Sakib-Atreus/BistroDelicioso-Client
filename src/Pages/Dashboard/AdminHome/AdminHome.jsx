@@ -60,7 +60,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   return (
     <div className="w-full ms-4">
       <h2 className="text-3xl mt-12 font-semibold">
-        Hi, <span className="text-4xl text-yellow-600">{user.displayName}</span>{" "}
+        Hi, <span className="text-4xl text-yellow-600">{user.displayName}</span>
         Welcome Back!
       </h2>
       <div className="stats shadow mt-12 w-full gap-4">

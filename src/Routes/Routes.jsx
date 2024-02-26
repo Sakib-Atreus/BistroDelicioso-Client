@@ -17,12 +17,14 @@ import ManageItems from "../Pages/Dashboard/ManageItems/ManageItems";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
 import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
+import Error from "../Pages/Error/Error";
 
 
   export const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
+      errorElement: <Error></Error>,
       children: [
         {
             path: '/',
@@ -49,6 +51,7 @@ import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
     {
       path: '/dashboard',
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+      errorElement: <Error></Error>,
       children: [
         {
           path: '/dashboard/userHome',
